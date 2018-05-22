@@ -1,0 +1,69 @@
+
+<form [formGroup]="formdata" (ngSubmit)="onClickSubmit(formdata.value)">
+    <h1>
+      <header>Flight Details</header>
+    </h1>
+  
+    <div>
+      <label for="f">FlightNumber : </label>
+      <input type="text" name="f" formControlName="f" />
+     </div>
+    OR
+    <div>
+      <label for="ori">Origin</label>
+      <input type="text" name="ori" formControlName="ori" />
+    </div>
+    <div>
+      <label for="des">Destination</label>
+      <input type="text" name="des" formControlName="des" /> 
+    </div>
+  Select Date
+    <div>
+        <label for="d">ArrivalDate</label>
+        <input type="date" name="d" formControlName="d" />
+      </div>
+    <button [disabled]="!formdata.valid" value="Submit">Submit</button>
+  </form>
+  
+ 
+
+<div>
+  <mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef = "flightNumber">
+      <mat-header-cell *matHeaderCellDef>Flight Number</mat-header-cell>
+      <mat-cell *matCellDef="let flightDetail"> {{flightDetail.flightNumber}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef = "carrier">
+      <mat-header-cell *matHeaderCellDef>carrier</mat-header-cell>
+      <mat-cell *matCellDef="let flightDetail"> {{flightDetail.carrier}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef = "origin">
+      <mat-header-cell *matHeaderCellDef>origin</mat-header-cell>
+      <mat-cell *matCellDef="let flightDetail"> {{flightDetail.origin}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef = "departure">
+      <mat-header-cell *matHeaderCellDef>departure</mat-header-cell>
+      <mat-cell *matCellDef="let flightDetail"> {{flightDetail.departure}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef = "destination">
+      <mat-header-cell *matHeaderCellDef>destination</mat-header-cell>
+      <mat-cell *matCellDef="let flightDetail"> {{flightDetail.destination}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef = "arrival">
+      <mat-header-cell *matHeaderCellDef>arrival</mat-header-cell>
+      <mat-cell *matCellDef="let flightDetail"> {{flightDetail.arrival}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef = "aircraft">
+      <mat-header-cell *matHeaderCellDef>aircraft</mat-header-cell>
+      <mat-cell *matCellDef="let flightDetail"> {{flightDetail.aircraft}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef = "distance">
+      <mat-header-cell *matHeaderCellDef>distance</mat-header-cell>
+      <mat-cell *matCellDef="let flightDetail"> {{flightDetail.distance}}</mat-cell>
+    </ng-container>
+ 
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+ </div>
+ 
